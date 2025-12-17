@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login - Júnior Diesel Automotiva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <style>
+    body {
+      background-image: url('../imagens/fundo-oficial.png');
+      background-size: cover; /* Cobre toda a tela mantendo proporção */
+      background-position: center center;
+      background-repeat: no-repeat;
+      background-color: #000;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="flex items-center justify-end min-h-screen px-10 bg-black bg-opacity-70 relative">
+
+  <div class="text-white text-center absolute top-10 left-10">
+    <div class="flex items-center gap-2">
+      <div class="bg-orange-600 p-2 rounded">
+        <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487a2.44 2.44 0 013.45 3.45l-9.55 9.551-4.608 1.158 1.158-4.608 9.55-9.551z"></path>
+        </svg>
+      </div>
+      <div class="text-left">
+        <h1 class="text-white text-2xl font-extrabold leading-tight">JÚNIOR DIESEL</h1>
+        <p class="text-gray-300 tracking-widest text-sm font-medium">AUTOMOTIVA</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="bg-[#1E1E1E] bg-opacity-90 p-8 rounded-2xl shadow-2xl w-full max-w-sm mx-auto">
+    <h2 class="text-2xl font-bold mb-6 text-white text-center">LOGIN</h2>
+
+    <form id="loginForm">
+      <div class="mb-4">
+        <label for="username" class="sr-only">Usuário</label>
+        <div class="flex items-center bg-[#2D2D2D] px-4 py-3 rounded-lg">
+          <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M5.121 17.804A8.966 8.966 0 0012 21c2.5 0 4.768-.978 6.465-2.574M15 11a3 3 0 11-6 0 3 3 0 016 0z" />
+          </svg>
+          <input type="text" id="username" name="username" placeholder="Usuário" class="w-full bg-transparent outline-none text-white placeholder-gray-400" required />
+        </div>
+      </div>
+
+      <div class="mb-6">
+        <label for="password" class="sr-only">Senha</label>
+        <div class="flex items-center bg-[#2D2D2D] px-4 py-3 rounded-lg">
+          <svg class="w-5 h-5 text-gray-400 mr-3" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+            <path stroke-linecap="round" stroke-linejoin="round" d="M12 15v2m0-6a2 2 0 012 2v2a2 2 0 01-4 0v-2a2 2 0 012-2zm0-5a5 5 0 00-5 5v1h10v-1a5 5 0 00-5-5z"></path>
+          </svg>
+          <input type="password" id="password" name="password" placeholder="Senha" class="w-full bg-transparent outline-none text-white placeholder-gray-400" required />
+        </div>
+      </div>
+
+      <button type="submit" class="w-full bg-orange-600 text-white py-3 rounded-xl font-semibold hover:bg-orange-700 transition duration-300 shadow-md">
+        ENTRAR
+      </button>
+    </form>
+  </div>
+  <script src="../js/jspaginas/loginPage.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/alertas.js"></script>
+
+</body>
+</html>

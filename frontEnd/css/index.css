@@ -1,0 +1,18 @@
+html, body {
+      font-family: 'Inter', sans-serif;
+      background-color: #000000;
+      color: #eee;
+      height: 100vh;
+      margin: 0;
+    }
+/* Scrollbar personalizado opcional */
+::-webkit-scrollbar {
+    width: 8px;
+}
+::-webkit-scrollbar-track {
+    background: #1e1e1e;
+}
+::-webkit-scrollbar-thumb {
+    background-color: #f97316;
+    border-radius: 10px;
+}

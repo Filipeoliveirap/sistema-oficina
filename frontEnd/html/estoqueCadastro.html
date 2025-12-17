@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Cadastro de Estoque</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet">
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+  <style>
+    body {
+      background-color: #000000;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="bg-black bg-opacity-90 text-white p-10">
+
+  <div class="bg-[#1E1E1E] p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto">
+    <h1 class="text-3xl font-extrabold mb-8 text-orange-600 text-center">Cadastro de Estoque</h1>
+
+    <form id="cadastro-estoque-form" class="space-y-6">
+      <input type="hidden" id="id" name="id" />
+
+      <!-- Produto -->
+      <div>
+        <label for="produto" class="block text-sm font-semibold mb-2">Produto:</label>
+        <div class="relative">
+          <i class="fas fa-box absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="text"
+            id="produto"
+            name="produto"
+            required
+            placeholder="Digite o nome do produto"
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+          />
+          <p id="produto-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Quantidade -->
+      <div>
+        <label for="quantidade" class="block text-sm font-semibold mb-2">Quantidade:</label>
+        <div class="relative">
+          <i class="fas fa-sort-numeric-up absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="number"
+            id="quantidade"
+            name="quantidade"
+            min="0"
+            required
+            placeholder="Digite a quantidade em estoque"
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+          />
+          <p id="quantidade-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Preço Unitário -->
+      <div>
+        <label for="precoUnitario" class="block text-sm font-semibold mb-2">Preço Unitário:</label>
+        <div class="relative">
+          <i class="fas fa-dollar-sign absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="number"
+            id="precoUnitario"
+            name="precoUnitario"
+            min="0"
+            step="0.01"
+            required
+            placeholder="Digite o preço unitário"
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+          />
+          <p id="precoUnitario-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Categoria -->
+      <div>
+        <label for="categoria" class="block text-sm font-semibold mb-2">Categoria:</label>
+        <div class="relative">
+          <i class="fas fa-tags absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input
+            type="text"
+            id="categoria"
+            name="categoria"
+            placeholder="Digite a categoria do produto"
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+          />
+          <p id="categoria-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Observações -->
+      <div>
+        <label for="observacoes" class="block text-sm font-semibold mb-2">Observações:</label>
+        <textarea
+          id="observacoes"
+          name="observacoes"
+          rows="3"
+          placeholder="Digite observações adicionais"
+          class="w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 p-2 resize-none focus:outline-none focus:ring-2 focus:ring-orange-600"
+        ></textarea>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex justify-end space-x-4">
+        <button
+          type="button"
+          id="cancelar-btn"
+          class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+        >
+          <i class="fas fa-times"></i> Cancelar
+        </button>
+        <button
+          type="submit"
+          class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+        >
+          <i class="fas fa-save"></i> Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <script src="../js/jspaginas/estoqueCadastro.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/alertas.js"></script>
+</body>
+</html>

@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="pt-br" class="scroll-smooth" >
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Junio diesel automotiva</title>
+  <link rel="stylesheet" href="../css/index.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter&display=swap" rel="stylesheet" />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  
+</head>
+<body>
+  <div class="flex h-screen w-full">
+    <!-- Sidebar -->
+    <nav class="flex flex-col w-64 bg-gray-900 p-6 shadow-lg">
+      <div class="mb-8">
+        <h2 class="text-orange-500 font-extrabold text-2xl">Oficina</h2>
+      </div>
+
+      <ul class="flex flex-col gap-3 flex-grow">
+        <li class="flex items-center gap-3 px-4 py-2 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black transition-colors duration-300" onclick="carregarPagina('dashboard')" id="menu-dashboard">
+          <i class="fas fa-chart-line"></i> Resumo
+        </li>
+        <li class="flex items-center gap-3 px-4 py-2 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black transition-colors duration-300" onclick="carregarPagina('clientes')" id="menu-clientes">
+          <i class="fas fa-users"></i> Clientes
+        </li>
+        <li class="flex items-center gap-3 px-4 py-2 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black transition-colors duration-300" onclick="carregarPagina('veiculos')" id="menu-veiculos">
+          <i class="fas fa-car"></i> Veículos
+        </li>
+        <li class="flex items-center gap-3 px-4 py-2 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black transition-colors duration-300" onclick="carregarPagina('servicos')" id="menu-servicos">
+          <i class="fas fa-tools"></i> Serviços
+        </li>
+        <li class="flex items-center gap-3 px-4 py-2 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black transition-colors duration-300" onclick="carregarPagina('estoque')" id="menu-estoque">
+          <i class="fas fa-boxes"></i> Estoque
+        </li>
+        <li class="flex items-center gap-3 px-4 py-2 rounded-md cursor-pointer hover:bg-orange-500 hover:text-black transition-colors duration-300" onclick="carregarPagina('relatorios')" id="menu-relatorios">
+          <i class="fas fa-file-alt"></i> Relatórios
+        </li>
+      </ul>
+
+      <div class="mt-auto">
+        <button id="btnFechar" class="w-full bg-orange-500 hover:bg-orange-600 text-white font-bold py-2 rounded-md shadow-md transition-colors duration-300">
+          Fechar
+        </button>
+      </div>
+    </nav>
+
+    <!-- Conteúdo principal -->
+    <main class="flex-grow bg-gray-950 p-6">
+      <iframe
+        id="conteudo-frame"
+        src="../html/dashboard.html"
+        frameborder="0"
+        class="w-full h-full rounded-xl shadow-lg bg-black"
+        title="Conteúdo principal"
+      ></iframe>
+    </main>
+  </div>
+
+  <script src="../js/renderer.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Cadastro de Cliente</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #000000;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-black bg-opacity-90 text-white p-10">
+
+  <div class="bg-[#1E1E1E] p-8 rounded-2xl shadow-2xl max-w-3xl mx-auto">
+    <h1 class="text-3xl font-extrabold mb-8 text-orange-600 text-center">Cadastro de Cliente</h1>
+
+    <form id="cadastro-cliente-form" class="space-y-6">
+      <input type="hidden" id="id" name="id">
+
+      <!-- Nome -->
+      <div>
+        <label for="nome" class="block text-sm font-semibold mb-2">Nome:</label>
+        <div class="relative">
+          <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="nome" name="nome" required
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            placeholder="Digite o nome do cliente" />
+          <p id="nome-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- CPF -->
+      <div>
+        <label for="cpf" class="block text-sm font-semibold mb-2">CPF:</label>
+        <div class="relative">
+          <i class="fas fa-id-card absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="cpf" name="cpf" pattern="\d{11}" required
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            placeholder="Digite o CPF do cliente"
+            maxlength="11" />
+          <p id="cpf-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Telefone -->
+      <div>
+        <label for="telefone" class="block text-sm font-semibold mb-2">Telefone:</label>
+        <div class="relative">
+          <i class="fas fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="telefone" name="telefone" pattern="\d{10,11}" required
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            placeholder="Digite o telefone do cliente" />
+          <p id="telefone-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Email -->
+      <div>
+        <label for="email" class="block text-sm font-semibold mb-2">Email:</label>
+        <div class="relative">
+          <i class="fas fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="email" id="email" name="email"
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            placeholder="Digite o email do cliente" />
+          <p id="email-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Endereço -->
+      <div>
+        <label for="endereco" class="block text-sm font-semibold mb-2">Endereço:</label>
+        <div class="relative">
+          <i class="fas fa-map-marker-alt absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+          <input type="text" id="endereco" name="endereco"
+            class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            placeholder="Digite o endereço do cliente" />
+          <p id="endereco-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+      </div>
+
+      <!-- Botões -->
+      <div class="flex justify-end space-x-4">
+        <button type="button" id="cancelar-btn"
+          class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400">
+          <i class="fas fa-times"></i> Cancelar
+        </button>
+        <button type="submit"
+          class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500">
+          <i class="fas fa-save"></i> Salvar
+        </button>
+      </div>
+    </form>
+  </div>
+
+  <!-- Modal de Cadastro de Cliente -->
+  <div id="cadastro-cliente-modal"
+    class="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center z-50 hidden">
+    <div class="bg-[#1E1E1E] p-8 rounded-2xl shadow-2xl w-full max-w-2xl relative">
+
+      <!-- Botão de fechar -->
+      <button id="fechar-modal" class="absolute top-4 right-4 text-gray-400 hover:text-white text-xl">
+        &times;
+      </button>
+
+      <h2 id="titulo-formulario" class="text-2xl font-bold text-orange-600 mb-6 text-center">Cadastro de Cliente</h2>
+
+      <form id="form-modal" class="space-y-4">
+        <input type="hidden" id="modal-id" name="id">
+
+        <!-- Nome -->
+        <div>
+          <label for="modal-nome" class="block text-sm font-semibold mb-1">Nome:</label>
+          <div class="relative">
+            <i class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="modal-nome" name="nome" required
+              class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Digite o nome do cliente" />
+          </div>
+        </div>
+
+        <!-- CPF -->
+        <div>
+          <label for="modal-cpf" class="block text-sm font-semibold mb-1">CPF:</label>
+          <div class="relative">
+            <i class="fas fa-id-card absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="modal-cpf" name="cpf" pattern="\d{11}" required
+              class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Digite o CPF" />
+          </div>
+        </div>
+
+        <!-- Telefone -->
+        <div>
+          <label for="modal-telefone" class="block text-sm font-semibold mb-1">Telefone:</label>
+          <div class="relative">
+            <i class="fas fa-phone absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="modal-telefone" name="telefone" required
+              class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Digite o telefone" />
+          </div>
+        </div>
+
+        <!-- Email -->
+        <div>
+          <label for="modal-email" class="block text-sm font-semibold mb-1">Email:</label>
+          <div class="relative">
+            <i class="fas fa-envelope absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="email" id="modal-email" name="email"
+              class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Digite o email" />
+          </div>
+        </div>
+
+        <!-- Endereço -->
+        <div>
+          <label for="modal-endereco" class="block text-sm font-semibold mb-1">Endereço:</label>
+          <div class="relative">
+            <i class="fas fa-map-marker-alt absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+            <input type="text" id="modal-endereco" name="endereco" required
+              class="pl-10 pr-4 py-2 w-full rounded-md bg-[#2D2D2D] border border-gray-700 text-white placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Digite o endereço" />
+          </div>
+        </div>
+
+        <!-- Botões -->
+        <div class="flex justify-end space-x-4 pt-4">
+          <button type="button" id="cancelar-modal"
+            class="bg-gray-500 hover:bg-gray-600 text-white font-bold py-2 px-4 rounded-md">
+            Cancelar
+          </button>
+          <button type="submit" class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md">
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <script src="../js/jspaginas/cadastroClientes.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/alertas.js"></script>
+
+</body>
+
+</html>

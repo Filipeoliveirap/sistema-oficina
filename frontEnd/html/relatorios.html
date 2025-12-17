@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Serviços Finalizados - Júnior Diesel Automotiva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #000000;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen px-10 bg-black bg-opacity-90 relative text-white">
+  <!-- Logo no canto superior esquerdo -->
+  <div class="absolute top-5 left-10 flex items-center gap-2">
+    <div class="bg-orange-600 p-2 rounded">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487a2.44 2.44 0 013.45 3.45l-9.55 9.551-4.608 1.158 1.158-4.608 9.55-9.551z"></path>
+      </svg>
+    </div>
+    <div class="text-left">
+      <h1 class="text-white text-2xl font-extrabold leading-tight">JÚNIOR DIESEL</h1>
+      <p class="text-gray-300 tracking-widest text-sm font-medium">AUTOMOTIVA</p>
+    </div>
+  </div>
+
+  <div class="bg-[#1E1E1E] bg-opacity-90 p-8 rounded-2xl shadow-2xl w-full max-w-5xl mx-auto mt-20">
+    <h2 class="text-3xl font-extrabold mb-8 text-orange-600 text-center">Serviços Finalizados</h2>
+
+    <div class="bg-[#2D2D2D] rounded-lg p-6">
+      <!-- Filtros -->
+      <div class="flex flex-col md:flex-row items-center justify-between mb-6 space-y-4 md:space-y-0 md:space-x-4">
+        <input 
+          type="text" 
+          id="pesquisar-servico-finalizado" 
+          placeholder="Pesquisar por descrição ou CPF..." 
+          class="shadow-sm focus:ring-orange-600 focus:border-orange-600 block w-full sm:text-sm border-gray-600 rounded-md bg-[#1E1E1E] text-white placeholder-gray-400"
+        />
+        <input 
+          type="date" 
+          id="data-inicio" 
+          class="shadow-sm focus:ring-orange-600 focus:border-orange-600 block w-full sm:text-sm border-gray-600 rounded-md bg-[#1E1E1E] text-white"
+          title="Data de início"
+        />
+        <input 
+          type="date" 
+          id="data-fim" 
+          class="shadow-sm focus:ring-orange-600 focus:border-orange-600 block w-full sm:text-sm border-gray-600 rounded-md bg-[#1E1E1E] text-white"
+          title="Data de fim"
+        />
+        <select 
+          id="filtro-periodo" class="border border-gray-600 rounded-md p-2 text-sm bg-[#1E1E1E] text-white" title="Filtrar por período"
+        >
+          <option value="" class="text-black">Período</option>
+          <option value="semana" class="text-black">Esta semana</option>
+          <option value="mes" class="text-black">Este mês</option>
+          <option value="ano" class="text-black">Este ano</option>
+          <option value="todos" class="text-black">Todos os serviços</option>
+        </select>
+        <button 
+          id="btn-buscar-servico-finalizado" 
+          class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:shadow-outline flex items-center space-x-2"
+        >
+          <i class="fas fa-search"></i><span>Pesquisar</span>
+        </button>
+      </div>
+
+      <!-- Tabela -->
+      <div class="overflow-x-auto rounded-md shadow-inner border border-gray-700">
+        <table id="tabela-servicos-finalizados" class="min-w-full leading-normal">
+          <thead class="bg-orange-700 text-white">
+            <tr>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Descrição</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Preço</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Data Início</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Data Finalização</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Cliente</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">CPF</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Veículo</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Produtos Usados</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Cláusula Garantia</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Data Garantia</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Observações</th>
+              <th class="px-5 py-3 text-left text-xs font-semibold uppercase tracking-wider">Ações</th>
+            </tr>
+          </thead>
+          <tbody class="bg-[#1E1E1E] text-white">
+            <!-- Conteúdo dinâmico aqui -->
+          </tbody>
+        </table>
+      </div>
+
+      <!-- Paginação -->
+      <div id="paginacao" class="flex justify-center mt-6 space-x-2 text-white"></div>
+
+      <!-- Botão Adicionar ou Gerar Relatório -->
+      <div class="mt-6 flex justify-end space-x-4">
+        <button 
+          id="btn-gerar-relatorio-geral" 
+          class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:shadow-outline flex items-center space-x-2"
+        >
+          <i class="fas fa-file-pdf"></i><span>Gerar Relatório</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal de Observação -->
+  <div id="modalObservacao" class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50 hidden">
+    <div class="bg-[#1E1E1E] text-white rounded-xl shadow-lg p-6 w-full max-w-md">
+      <h2 class="text-xl font-semibold mb-4 text-orange-500">Adicionar Observação</h2>
+      <textarea 
+        id="inputObservacao" 
+        class="w-full p-3 border border-gray-600 bg-[#2D2D2D] text-white rounded-lg resize-none focus:outline-none focus:ring-2 focus:ring-orange-500" 
+        rows="4" 
+        placeholder="Digite a observação..."
+        aria-label="Campo para digitar a observação"
+      ></textarea>
+      <div class="flex justify-end gap-2 mt-4">
+        <button 
+          id="btnCancelar" 
+          class="px-4 py-2 bg-gray-500 text-white rounded hover:bg-gray-600 transition"
+          aria-label="Cancelar observação"
+        >
+          Cancelar
+        </button>
+        <button 
+          id="btnSalvar" 
+          class="px-4 py-2 bg-orange-600 text-white rounded hover:bg-orange-700 disabled:opacity-50 transition"
+          disabled
+          aria-label="Salvar observação"
+        >
+          Salvar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <script src="../js/jspaginas/relatorios.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="../js/alertas.js"></script>
+</body>
+</html>

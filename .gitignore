@@ -1,0 +1,18 @@
+# Ignora node_modules (gerado pelo npm)
+frontEnd/node_modules/
+
+# Ignora executáveis grandes
+*.exe
+
+# Ignora arquivos de log
+*.log
+
+# Ignora pastas de build
+dist/
+build/
+out/
+target/
+
+# Banco de dados local
+*.db
+

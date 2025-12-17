@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Resumo - Júnior Diesel Automotiva</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap" rel="stylesheet" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet" />
+  <style>
+    body {
+      background-color: #000000;
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+<body class="flex flex-col min-h-screen px-10 bg-black bg-opacity-90 text-white relative">
+
+  <!-- Logo no canto superior esquerdo -->
+  <div class="absolute top-5 left-10 flex items-center gap-2">
+    <div class="bg-orange-600 p-2 rounded">
+      <svg class="w-6 h-6 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M16.862 4.487a2.44 2.44 0 013.45 3.45l-9.55 9.551-4.608 1.158 1.158-4.608 9.55-9.551z" />
+      </svg>
+    </div>
+    <div class="text-left">
+      <h1 class="text-white text-2xl font-extrabold leading-tight">JÚNIOR DIESEL</h1>
+      <p class="text-gray-300 tracking-widest text-sm font-medium">AUTOMOTIVA</p>
+    </div>
+  </div>
+
+  <div class="bg-[#1E1E1E] bg-opacity-90 p-8 rounded-2xl shadow-2xl w-full max-w-6xl mx-auto mt-20">
+    <h2 class="text-3xl font-extrabold mb-8 text-orange-600 text-center">Resumo</h2>
+
+    <!-- Cards -->
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-10">
+      <div class="bg-[#2D2D2D] p-6 rounded-lg shadow-md text-center">
+        <h2 class="text-lg font-semibold mb-2">Clientes</h2>
+        <p id="totalClientes" class="text-3xl font-bold text-orange-500">0</p>
+      </div>
+      <div class="bg-[#2D2D2D] p-6 rounded-lg shadow-md text-center">
+        <h2 class="text-lg font-semibold mb-2">Serviço em andamento</h2>
+        <p id="servicosAndamento" class="text-3xl font-bold text-orange-500">0</p>
+      </div>
+      <div class="bg-[#2D2D2D] p-6 rounded-lg shadow-md text-center">
+        <h2 class="text-lg font-semibold mb-2">Estoque</h2>
+        <p id="totalEstoque" class="text-3xl font-bold text-orange-500">0</p>
+      </div>
+      <div class="bg-[#2D2D2D] p-6 rounded-lg shadow-md text-center">
+        <h2 class="text-lg font-semibold mb-2">Serviços concluídos</h2>
+        <p id="servicosFinalizados" class="text-3xl font-bold text-orange-500">0</p>
+      </div>
+    </div>
+
+    <!-- Tabela de histórico -->
+    <div class="mb-10">
+        <h2 class="text-xl font-semibold mb-6 text-orange-500">Últimos Serviços Realizados</h2>
+        <div class="overflow-x-auto rounded-lg shadow-inner border border-gray-700">
+            <table id="historicoServicos" class="min-w-full text-sm text-white bg-[#1E1E1E] border-separate" style="border-spacing: 0 1rem;">
+                <thead class="bg-orange-700 text-white rounded-lg">
+                    <tr>
+                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tl-lg">Cliente</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Descrição</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Início</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Data</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider">Valor</th>
+                        <th class="px-6 py-3 text-left text-xs font-semibold uppercase tracking-wider rounded-tr-lg">Observações</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- Linhas preenchidas pelo JS aqui -->
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+
+
+    <!-- Gráfico -->
+    <div>
+      <h2 class="text-xl font-semibold mb-4 text-orange-500">Serviço por mês</h2>
+      <div class="bg-[#2D2D2D] p-6 rounded-lg shadow-md">
+        <canvas id="graficoServicos" width="400" height="150"></canvas>
+      </div>
+    </div>
+
+  </div>
+
+  <script src="../js/jspaginas/dashboard.js"></script>
+</body>
+</html>

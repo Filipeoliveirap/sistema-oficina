@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Cadastro de Serviço</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"
+      rel="stylesheet"
+    />
+    <style>
+      body {
+        background-color: #000000;
+        font-family: "Inter", sans-serif;
+      }
+    </style>
+  </head>
+  <body class="min-h-screen px-6 py-10 bg-black bg-opacity-90 text-white">
+    <h1 class="text-3xl font-extrabold text-orange-600 text-center mb-10">
+      Cadastro de Serviço
+    </h1>
+
+    <div
+      class="bg-[#1E1E1E] bg-opacity-90 shadow-2xl rounded-2xl p-8 max-w-xl mx-auto"
+    >
+      <form id="cadastro-servico-form" class="space-y-6">
+        <input type="hidden" id="id" name="id" />
+
+        <!-- Descrição -->
+        <div>
+          <label
+            for="descricao"
+            class="block text-sm font-semibold text-white mb-2"
+            >Descrição do Serviço:</label
+          >
+          <div class="relative">
+            <i
+              class="fas fa-clipboard-list absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="text"
+              id="descricao"
+              name="descricao"
+              required
+              class="pl-10 pr-3 py-2 w-full rounded-md bg-[#2D2D2D] text-white border border-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Descreva o serviço"
+            />
+            <p id="descricao-error" class="text-red-500 text-xs mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Preço -->
+        <div>
+          <label for="preco" class="block text-sm font-semibold text-white mb-2"
+            >Preço:</label
+          >
+          <div class="relative">
+            <i
+              class="fas fa-dollar-sign absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="number"
+              step="0.01"
+              min="0"
+              id="preco"
+              name="preco"
+              required
+              class="pl-10 pr-3 py-2 w-full rounded-md bg-[#2D2D2D] text-white border border-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Valor do serviço"
+            />
+            <p id="preco-error" class="text-red-500 text-xs mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Data -->
+        <div>
+          <label for="data" class="block text-sm font-semibold text-white mb-2"
+            >Data:</label
+          >
+          <div class="relative">
+            <i
+              class="fas fa-calendar-alt absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="date"
+              id="data"
+              name="data"
+              required
+              class="pl-10 pr-3 py-2 w-full rounded-md bg-[#2D2D2D] text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            />
+            <p id="data-error" class="text-red-500 text-xs mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Cliente -->
+        <div>
+          <label
+            for="busca-cliente"
+            class="block text-sm font-semibold text-white mb-2"
+            >Cliente:</label
+          >
+          <div class="relative">
+            <i
+              class="fas fa-user absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="text"
+              id="busca-cliente"
+              class="pl-10 pr-3 py-2 w-full rounded-md bg-[#2D2D2D] text-white border border-gray-600 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-orange-600"
+              placeholder="Digite o nome do cliente"
+              autocomplete="off"
+            />
+            <input type="hidden" id="cliente-id" name="clienteId" />
+            <ul
+              id="sugestoes-clientes"
+              class="absolute z-10 w-full bg-[#1E1E1E] border border-gray-600 rounded-md mt-1 hidden max-h-40 overflow-y-auto text-white"
+            ></ul>
+            <p id="cliente-error" class="text-red-500 text-xs mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Veículo -->
+        <div>
+          <label
+            for="busca-veiculo"
+            class="block text-sm font-semibold text-white mb-2"
+          >
+            Veículo:
+          </label>
+          <div class="relative">
+            <i
+              class="fas fa-car-side absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"
+            ></i>
+            <input
+              type="text"
+              id="busca-veiculo"
+              name="veiculo"
+              placeholder="Digite modelo ou placa"
+              autocomplete="off"
+              required
+              class="pl-10 pr-3 py-2 w-full rounded-md bg-[#2D2D2D] text-white border border-gray-600 focus:outline-none focus:ring-2 focus:ring-orange-600"
+            />
+            <input type="hidden" id="veiculo-id" name="veiculoId" />
+            <ul
+              id="sugestoes-veiculos"
+              class="absolute z-10 w-full bg-[#1E1E1E] border border-gray-600 rounded-md mt-1 hidden max-h-40 overflow-y-auto text-white"
+            ></ul>
+            <p id="veiculo-error" class="text-red-500 text-xs mt-1"></p>
+          </div>
+        </div>
+
+        <!-- Produtos Usados -->
+        <div>
+          <label
+            class="block text-sm font-semibold text-white mb-2"
+          >
+            Produtos Utilizados:
+          </label>
+          <div id="produtos-container" class="space-y-2">
+            <!-- Linhas de produtos adicionadas pelo JS -->
+          </div>
+          <button
+            type="button"
+            id="adicionar-produto-btn"
+            class="mt-2 bg-gray-700 hover:bg-gray-600 text-white font-semibold py-1 px-3 rounded-md"
+          >
+            <i class="fas fa-plus"></i> Adicionar Produto
+          </button>
+          <p id="produtos-error" class="text-red-500 text-xs mt-1"></p>
+        </div>
+
+        <!-- Botões -->
+        <div class="flex justify-end space-x-3 pt-4">
+          <button
+            type="button"
+            id="cancelar-btn"
+            class="bg-gray-600 hover:bg-gray-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-gray-400"
+          >
+            <i class="fas fa-times"></i> Cancelar
+          </button>
+          <button
+            type="submit"
+            class="bg-orange-600 hover:bg-orange-700 text-white font-bold py-2 px-4 rounded-md shadow-md focus:outline-none focus:ring-2 focus:ring-orange-500"
+          >
+            <i class="fas fa-save"></i> Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script src="../js/jspaginas/servicoCadastro.js"></script>
+    <script src="../js/alertas.js"></script>
+  </body>
+</html>
